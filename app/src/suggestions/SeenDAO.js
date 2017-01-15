@@ -2,10 +2,10 @@
   "use strict";
 
   //TODO store these between sessions!
-  angular.module("aa.database")
-    .service("TagDAO", TagDAO);
+  angular.module("aa.suggestions")
+    .service("SeenDAO", SeenDAO);
 
-  function TagDAO() {
+  function SeenDAO() {
     var service = {};
     var seenStore = [];
 

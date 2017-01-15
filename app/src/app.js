@@ -2,13 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name updateApp
+ * @name anxietyApp
  * @description
- * # updateApp
+ * # anxietyApp
  *
  * Main module of the application.
  */
- angular.module('aa.suggetions', []);
+ angular.module('aa.suggestions', []);
+ angular.module('aa.library', []);
 angular
   .module('anxietyApp', [
     'ngAnimate',
@@ -17,19 +18,15 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'aa.suggetions'
+    'aa.suggestions',
+    'aa.library'
   ])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+        templateUrl: 'src/library/library.html',
+        controller: 'LibraryCtrl',
+        controllerAs: '$libCtrl'
       })
       .otherwise({
         redirectTo: '/'

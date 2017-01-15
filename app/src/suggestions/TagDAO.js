@@ -6,11 +6,14 @@
     .service("TagDAO", TagDAO);
 
   function TagDAO() {
+    var service = {};
     var tagStore = {};
 
-    this.updateTag;
-    this.getSomeTopTags;
-    this.getNoShowTags;
+    service.updateTag = updateTag;
+    service.getSomeTopTags = getSomeTopTags;
+    service.getNoShowTags = getNoShowTags;
+
+    return service;
 
     //Update tag will be used for both positive and negative updates
     // to the tag.
@@ -35,7 +38,7 @@
 
 
     function __filterTags(filterFn) {
-      return _.keys(tagStore.filter(filterFn));
+      return _.keys(_.filter(tagStore, filterFn));
     }
 
   }

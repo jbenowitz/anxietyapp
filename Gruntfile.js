@@ -38,7 +38,7 @@ module.exports = function (grunt) {
         tasks: ['wiredep']
       },
       js: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
+        files: ['<%= yeoman.app %>/src/{,*/}*.js'],
         tasks: ['newer:jshint:all'],
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -127,7 +127,7 @@ module.exports = function (grunt) {
       all: {
         src: [
           'Gruntfile.js',
-          '<%= yeoman.app %>/scripts/{,*/}*.js'
+          '<%= yeoman.app %>/src/{,*/}*.js'
         ]
       },
       test: {
@@ -214,7 +214,7 @@ module.exports = function (grunt) {
         cssDir: 'dist/styles',
         generatedImagesDir: '.tmp/images/generated',
         imagesDir: '<%= yeoman.app %>/images',
-        javascriptsDir: '<%= yeoman.app %>/scripts',
+        javascriptsDir: '<%= yeoman.app %>/src',
         fontsDir: '<%= yeoman.app %>/styles/fonts',
         importPath: './bower_components',
         httpImagesPath: '/images',
@@ -271,7 +271,7 @@ module.exports = function (grunt) {
     usemin: {
       html: ['<%= yeoman.dist %>/{,*/}*.html'],
       css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
-      js: ['<%= yeoman.dist %>/scripts/{,*/}*.js'],
+      js: ['<%= yeoman.dist %>/src/{,*/}*.js'],
       options: {
         assetsDirs: [
           '<%= yeoman.dist %>',
@@ -311,8 +311,8 @@ module.exports = function (grunt) {
     // },
     concat: {
       scripts: {
-         src: ['app/scripts/**/*.js', '.tmp/templateCache.js'],
-        dest: '<%= yeoman.dist %>/scripts/scripts.js',
+         src: ['app/src/**/*.js', '.tmp/templateCache.js'],
+        dest: '<%= yeoman.dist %>/src/scripts.js',
       },
       vendor: {
         src: [
@@ -323,9 +323,9 @@ module.exports = function (grunt) {
         'bower_components/angular-route/angular-route.js',
         'bower_components/angular-sanitize/angular-sanitize.js',
         'bower_components/angular-touch/angular-touch.js',
-        'node_modules/lodash.js'
+        'node_modules/lodash/lodash.js'
               ],
-        dest: '<%= yeoman.dist %>/scripts/vendor.js'
+        dest: '<%= yeoman.dist %>/src/vendor.js'
       }
     },
 
@@ -371,12 +371,12 @@ module.exports = function (grunt) {
     ngtemplates: {
       dist: {
         options: {
-          module: 'updateApp',
+          module: 'anxietyApp',
           htmlmin: '<%= htmlmin.dist.options %>',
-          usemin: 'scripts/scripts.js'
+          usemin: 'src/scripts.js'
         },
         cwd: '<%= yeoman.app %>',
-        src: 'views/{,*/}*.html',
+        src: 'src/{,*/}*.html',
         dest: '.tmp/templateCache.js'
       }
     },
@@ -387,9 +387,9 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '.tmp/concat/scripts',
+          cwd: '.tmp/concat/src',
           src: '*.js',
-          dest: '.tmp/concat/scripts'
+          dest: '.tmp/concat/src'
         }]
       }
     },
@@ -412,7 +412,7 @@ module.exports = function (grunt) {
           src: [
             '*.{ico,png,txt}',
             '.htaccess',
-            '*.html',
+            '**/*.html',
             'images/{,*/}*.{webp}',
             'styles/fonts/{,*/}*.*'
           ]
