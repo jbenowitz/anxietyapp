@@ -8,14 +8,16 @@
  *
  * Main module of the application.
  */
+ angular.module('aa.suggetions', []);
 angular
-  .module('updateApp', [
+  .module('anxietyApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'aa.suggetions'
   ])
   .config(function ($routeProvider) {
     $routeProvider

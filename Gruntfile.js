@@ -322,7 +322,8 @@ module.exports = function (grunt) {
         'bower_components/angular-resource/angular-resource.js',
         'bower_components/angular-route/angular-route.js',
         'bower_components/angular-sanitize/angular-sanitize.js',
-        'bower_components/angular-touch/angular-touch.js'
+        'bower_components/angular-touch/angular-touch.js',
+        'node_modules/lodash.js'
               ],
         dest: '<%= yeoman.dist %>/scripts/vendor.js'
       }
