@@ -7,10 +7,12 @@
 	function SuggestionQueryFactory(SeenDAO,
 																	TagDAO) {
 		var service = {};
-		var jsonLibrary = JSON.parse('assets/resource-library.json');
+		var jsonLibrary = [];
 
 		service.getRandom = getRandom;
 		service.getUnusedResources = getUnusedResources;
+
+		_setupResourceLibrary();
 
 		return service;
 
@@ -21,10 +23,14 @@
 			var badTags = TagDAO.getNoShowTags();
 			var nextStepSuggestions = _.filter(startingSuggestions, function(jsonItem) {
 				var includesTopTags = true;
+				var doesNotIncludeBadTags = true;
 				if (someTopTags.length) {
 					includesTopTags = _.includes(jsonItem.tags, someTopTags);
 				}
-				return includesTopTags && !_.includes(jsonItem.tags, badTags);
+				if (badTags.length) {
+					doesNotIncludeBadTags = !_.includes(jsonItem.tags, badTags);
+				}
+				return includesTopTags && doesNotIncludeBadTags;
 			});
 
 			console.log("nextStepSuggestions", nextStepSuggestions);
@@ -49,6 +55,18 @@
 				function(jsonItem){
 					return !_.includes(SeenDAO.getSeenIds(), jsonItem.id)
 				});
+		}
+
+		function _setupResourceLibrary() {
+			var oReq = new XMLHttpRequest();
+			oReq.onload = reqListener;
+			oReq.open("get", "assets/resource-library.json", true);
+			oReq.send();
+
+			function reqListener(e) {
+			    jsonLibrary = JSON.parse(this.responseText);
+					console.log("json library", jsonLibrary);
+			}
 		}
 	}
 
