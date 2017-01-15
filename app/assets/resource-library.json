@@ -8,7 +8,7 @@
         "format": "visual",
         "toplevelcategory": "memes and gifs",
         "sublevelcategory": "animals",
-        "tags1": "internet"
+        "tags": "internet"
     },
     {
         "id": 2,
@@ -19,7 +19,7 @@
         "format": "visual",
         "toplevelcategory": "short form",
         "sublevelcategory": "article, satire",
-        "tags1": "theonion"
+        "tags": "theonion"
     },
     {
         "id": 3,
@@ -32,7 +32,7 @@
         "format": "visual",
         "toplevelcategory": "photographs",
         "sublevelcategory": "cities, instagram",
-        "tags1": "perspective"
+        "tags": "perspective"
     },
     {
         "id": 4,
@@ -43,7 +43,7 @@
         "format": "audio",
         "toplevelcategory": "video",
         "sublevelcategory": "comedy",
-        "tags1": "standup"
+        "tags": "standup"
     },
     {
         "id": 5,
@@ -54,7 +54,7 @@
         "format": "audio",
         "toplevelcategory": "video",
         "sublevelcategory": "comedy",
-        "tags1": "standup"
+        "tags": "standup"
     },
     {
         "id": 6,
@@ -305,7 +305,7 @@
         "format": "visual",
         "toplevelcategory": "long form",
         "sublevelcategory": "essay",
-        "tags1": "qpoc, therapy, queer"
+        "tags": "qpoc, therapy, queer"
     },
     {
         "id": 31,
@@ -326,7 +326,7 @@
         "format": "visual",
         "toplevelcategory": "short form",
         "sublevelcategory": "essay, comedy",
-        "tags1": "advice"
+        "tags": "advice"
     },
     {
         "id": 33,
@@ -528,7 +528,7 @@
         "format": "visual",
         "toplevelcategory": "memes and gifs",
         "sublevelcategory": "relaxation",
-        "tags1": "breathing"
+        "tags": "breathing"
     },
     {
         "id": 53,
@@ -538,7 +538,7 @@
         "format": "visual",
         "toplevelcategory": "memes and gifs",
         "sublevelcategory": "relaxation",
-        "tags1": "breathing"
+        "tags": "breathing"
     },
     {
         "id": 54,
@@ -713,7 +713,7 @@
         "format": "audio",
         "toplevelcategory": "video",
         "sublevelcategory": "web series",
-        "tags1": "teens"
+        "tags": "teens"
     },
     {
         "id": 71,
@@ -764,7 +764,7 @@
         "format": "audio",
         "toplevelcategory": "video",
         "sublevelcategory": "youtube channel, relaxation",
-        "tags1": "new age"
+        "tags": "new age"
     },
     {
         "id": 76,
@@ -775,8 +775,7 @@
         "format": "visual",
         "toplevelcategory": "long form",
         "sublevelcategory": "zine",
-        "tags1": "futurism",
-        "tags2": "scifi"
+        "tags": "futurism, scifi"
     },
     {
         "id": 77,
@@ -848,7 +847,7 @@
         "format": "audio",
         "toplevelcategory": "music",
         "sublevelcategory": "without words, artist",
-        "tags1": "instrumental"
+        "tags": "instrumental"
     },
     {
         "id": 83,

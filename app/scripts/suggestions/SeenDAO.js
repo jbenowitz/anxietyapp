@@ -10,8 +10,7 @@
     var seenStore = [];
 
     service.seenItem = seenItem;
-
-    service.getSeenItems = function() { return seenItems; };
+    service.getSeenIds = function() { return seenStore; };
 
     return service;
 

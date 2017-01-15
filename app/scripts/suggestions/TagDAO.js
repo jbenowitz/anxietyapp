@@ -38,8 +38,7 @@
 
 
     function __filterTags(filterFn) {
-      return _.keys(_.filter(tagStore,
-                             filterFn));
+      return _.keys(tagStore.filter(filterFn));
     }
 
   }
