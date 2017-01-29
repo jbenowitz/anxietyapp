@@ -27,10 +27,10 @@
 				var includesTopTags = true;
 				var doesNotIncludeBadTags = true;
 				if (someTopTags.length) {
-					includesTopTags = _.include(jsonItem.tags, someTopTags);
+					includesTopTags = _.includes(jsonItem.tags, someTopTags);
 				}
 				if (badTags.length) {
-					doesNotIncludeBadTags = !_.include(jsonItem.tags, badTags);
+					doesNotIncludeBadTags = !_.includes(jsonItem.tags, badTags);
 				}
 
 				return includesTopTags && doesNotIncludeBadTags;
@@ -55,7 +55,7 @@
 		function getUnusedResources() {
 			return _.filter(jsonLibrary,
 				function(jsonItem){
-					return !_.include(SeenDAO.getSeenIds(), jsonItem.id)
+					return !_.includes(SeenDAO.getSeenIds(), jsonItem.id)
 				});
 		}
 

@@ -27,7 +27,7 @@
         _.forEach(currentItem.tags, function(tag) {
           TagDAO.updateTag(tag, isPositive ? 1 : -1);
         });
-
+				_.pullAt(currentSuggestions, 0);
         if (currentSuggestions.length <= 3) {
           _generateCurrentSuggestions(3);
         }
