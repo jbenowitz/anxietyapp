@@ -26,7 +26,8 @@ angular
       .when('/', {
         templateUrl: 'src/library/library.html',
         controller: 'LibraryCtrl',
-        controllerAs: '$libCtrl'
+        controllerAs: '$libCtrl',
+        resolve: {setupLibrary: function(SuggestionQuery) {return SuggestionQuery.setupResourceLibrary();}}
       })
       .otherwise({
         redirectTo: '/'

@@ -4,7 +4,8 @@
 	angular.module("aa.suggestions")
 		.factory('SuggestionQuery', SuggestionQueryFactory);
 
-	function SuggestionQueryFactory(SeenDAO,
+	function SuggestionQueryFactory($q,
+																	SeenDAO,
 																	TagDAO) {
 		var service = {};
 		var jsonLibrary = [];
@@ -12,7 +13,7 @@
 		service.getRandom = getRandom;
 		service.getUnusedResources = getUnusedResources;
 
-		_setupResourceLibrary();
+		service.setupResourceLibrary = setupResourceLibrary;
 
 		return service;
 
@@ -21,19 +22,20 @@
 			var startingSuggestions = getUnusedResources();
 			var someTopTags = TagDAO.getSomeTopTags();
 			var badTags = TagDAO.getNoShowTags();
+
 			var nextStepSuggestions = _.filter(startingSuggestions, function(jsonItem) {
 				var includesTopTags = true;
 				var doesNotIncludeBadTags = true;
 				if (someTopTags.length) {
-					includesTopTags = _.includes(jsonItem.tags, someTopTags);
+					includesTopTags = _.include(jsonItem.tags, someTopTags);
 				}
 				if (badTags.length) {
-					doesNotIncludeBadTags = !_.includes(jsonItem.tags, badTags);
+					doesNotIncludeBadTags = !_.include(jsonItem.tags, badTags);
 				}
+
 				return includesTopTags && doesNotIncludeBadTags;
 			});
 
-			console.log("nextStepSuggestions", nextStepSuggestions);
 
 			if (nextStepSuggestions.length >= amount) {
 				return _.take(nextStepSuggestions, amount);
@@ -53,19 +55,22 @@
 		function getUnusedResources() {
 			return _.filter(jsonLibrary,
 				function(jsonItem){
-					return !_.includes(SeenDAO.getSeenIds(), jsonItem.id)
+					return !_.include(SeenDAO.getSeenIds(), jsonItem.id)
 				});
 		}
 
-		function _setupResourceLibrary() {
+		function setupResourceLibrary() {
+			var deferred = $q.defer();
 			var oReq = new XMLHttpRequest();
 			oReq.onload = reqListener;
 			oReq.open("get", "assets/resource-library.json", true);
 			oReq.send();
 
+			return deferred.promise;
+
 			function reqListener(e) {
 			    jsonLibrary = JSON.parse(this.responseText);
-					console.log("json library", jsonLibrary);
+					deferred.resolve();
 			}
 		}
 	}

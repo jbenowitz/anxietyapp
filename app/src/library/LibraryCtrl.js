@@ -11,13 +11,13 @@
     //this should be filled out via a resolve, but for right now we'll set it up here.
     var currentSuggestions = [];
 
-    this.getCurrentSuggestion;
+    this.getCurrentSuggestion = getCurrentSuggestion;
     this.switchItem = switchItem;
 
     _generateCurrentSuggestions(5);
 
     function getCurrentSuggestion() {
-      return _.first(currentSuggestions);
+			return _.first(currentSuggestions);
     }
 
     function switchItem(isPositive) {
@@ -25,7 +25,7 @@
 
         SeenDAO.seenItem(currentItem);
         _.forEach(currentItem.tags, function(tag) {
-          TagDAO.updateItem(tag, isPositive ? 1 : -1);
+          TagDAO.updateTag(tag, isPositive ? 1 : -1);
         });
 
         if (currentSuggestions.length <= 3) {
@@ -34,7 +34,7 @@
     }
 
     function _generateCurrentSuggestions(amt) {
-      currentSuggestions.concat(SuggestionQuery.getRandom(amt));
+      currentSuggestions = currentSuggestions.concat(SuggestionQuery.getRandom(amt));
     }
 
   }
